@@ -2,10 +2,9 @@
 
 namespace App\application\usecase;
 
-use App\application\gateway\CreateOrderGateway;
 use App\application\gateway\CreateProductGateway;
-use Order;
-use Product;
+use App\domain\entity\Product;
+
 
 class CreateProduct
 {

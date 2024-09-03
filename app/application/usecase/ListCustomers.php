@@ -3,6 +3,7 @@
 namespace App\application\usecase;
 
 use App\application\gateway\ListCustomersGateway;
+use App\domain\entity\Customer;
 
 class ListCustomers
 {

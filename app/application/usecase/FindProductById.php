@@ -3,7 +3,7 @@
 namespace App\application\usecase;
 
 use App\application\gateway\FindProductByIdGateway;
-use Product;
+use App\domain\entity\Product;
 
 class FindProductById
 {

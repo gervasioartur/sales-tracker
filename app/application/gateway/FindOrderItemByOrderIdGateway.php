@@ -2,8 +2,8 @@
 
 namespace App\application\gateway;
 
-use Order;
-use OrderItem;
+
+use App\domain\entity\OrderItem;
 
 interface FindOrderItemByOrderIdGateway
 {

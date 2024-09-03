@@ -3,7 +3,7 @@
 namespace App\application\usecase;
 
 use App\application\gateway\FindOrderItemByOrderIdGateway;
-use OrderItem;
+use App\domain\entity\OrderItem;
 
 class FindOrderItemByOrderId
 {

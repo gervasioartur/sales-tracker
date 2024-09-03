@@ -2,7 +2,8 @@
 
 namespace App\application\gateway;
 
-use OrderItem;
+
+use App\domain\entity\OrderItem;
 
 interface CreateOrderItemGateway
 {

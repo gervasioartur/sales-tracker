@@ -2,7 +2,8 @@
 
 namespace App\application\gateway;
 
-use Product;
+
+use App\domain\entity\Product;
 
 interface FindProductByIdGateway
 {

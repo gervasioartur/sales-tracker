@@ -3,7 +3,8 @@
 namespace App\application\usecase;
 
 use App\application\gateway\CreateOrderItemGateway;
-use OrderItem;
+use App\domain\entity\OrderItem;
+
 
 class CreateOrderItem
 {
