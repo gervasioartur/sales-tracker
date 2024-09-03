@@ -6,7 +6,6 @@ use App\domain\entity\Customer;
 use App\infra\mapper\CustomerMapper;
 use App\infra\persistence\repository\contract\CustomerRepository;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 
 class CustomerRepositoryImpl implements CustomerRepository
 {

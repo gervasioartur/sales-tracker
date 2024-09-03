@@ -5,13 +5,13 @@ namespace App\domain\entity;
 
 class Product {
     private int  $id;
-    private string $nome;
+    private string $name;
     private string $desc;
     private float $price;
 
-    public function __construct(string $nome, string $desc, float $price)
+    public function __construct(string $name, string $desc, float $price)
     {
-        $this->nome = $nome;
+        $this->name = $name;
         $this->desc = $desc;
         $this->price = $price;
     }
@@ -26,14 +26,14 @@ class Product {
         $this->id = $id;
     }
 
-    public function getNome(): string
+    public function getName(): string
     {
-        return $this->nome;
+        return $this->name;
     }
 
-    public function setNome(string $nome): void
+    public function setName(string $name): void
     {
-        $this->nome = $nome;
+        $this->name = $name;
     }
 
     public function getDesc(): string

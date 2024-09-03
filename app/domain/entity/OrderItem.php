@@ -2,6 +2,7 @@
 namespace App\domain\entity;
 
 class OrderItem {
+    private int $id;
     private int $orderId;
     private int $productId;
     private float $amount;
@@ -15,6 +16,14 @@ class OrderItem {
         $this->amount = $amount;
     }
 
+    public function getId(): int {
+        return $this->id;
+    }
+
+    public function setId(int $id): void {
+        $this->id = $id;
+    }
+    
     public function getOrderId(): int
     {
         return $this->orderId;
@@ -64,4 +73,5 @@ class OrderItem {
     {
         $this->subTotal = $subTotal;
     }
+
 }
