@@ -15,11 +15,11 @@ class CreateCustomerController extends BaseController
     private CustomerMapper $mapper;
     private ListCustomers $listCustomers;
 
-    public function __construct(CreateCustomer $usecase,ListCustomers $listCustomers, CustomerMapper $mapper)
+    public function __construct(CreateCustomer $usecase, ListCustomers $listCustomers, CustomerMapper $mapper)
     {
         $this->usecase = $usecase;
         $this->mapper = $mapper;
-        $this->listCustomers =  $listCustomers;
+        $this->listCustomers = $listCustomers;
     }
 
     public function index()

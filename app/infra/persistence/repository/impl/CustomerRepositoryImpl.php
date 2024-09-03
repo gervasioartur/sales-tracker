@@ -14,7 +14,7 @@ class CustomerRepositoryImpl implements CustomerRepository
 
     public function __construct(CustomerMapper $mapper)
     {
-        $this->mapper =  $mapper;
+        $this->mapper = $mapper;
     }
 
     function create(array $data): Customer
@@ -26,14 +26,14 @@ class CustomerRepositoryImpl implements CustomerRepository
     function findByEmail(string $email): ?Customer
     {
         $customer = DB::table('t_customers')->where('email', $email)->first();
-        if($customer) return $this->mapper->formObj($customer);
+        if ($customer) return $this->mapper->formObj($customer);
         return null;
     }
 
     function list(): ?array
     {
         $customers = DB::table('t_customers')->get();
-        if($customers) {
+        if ($customers) {
             return $customers->map(function ($customer) {
                 return $this->mapper->formObj($customer);
             })->toArray();

@@ -15,12 +15,12 @@ class CreateCustomerService implements CreateCustomerGateway
     public function __construct(CustomerRepository $repository, CustomerMapper $mapper)
     {
         $this->repository = $repository;
-        $this->mapper= $mapper;
+        $this->mapper = $mapper;
     }
 
     function create(Customer $customer): Customer
     {
         $data = $this->mapper->formEntity($customer);
-        return  $this->repository->create($data);
+        return $this->repository->create($data);
     }
 }
