@@ -3,10 +3,8 @@
 namespace App\application\usecase;
 
 use App\application\gateway\CreateCustomerGateway;
-use App\domain\entity\CustomerEntity;
+use App\domain\entity\Customer;
 use App\domain\exception\ConflictException;
-use Illuminate\Support\Facades\Log;
-
 
 class CreateCustomer
 {
@@ -19,9 +17,8 @@ class CreateCustomer
         $this->gateway = $gateway;
     }
 
-    public function create(CustomerEntity $customer): void
+    public function create(Customer $customer): void
     {
-        Log::channel('stderr')->info('Something happened!');
         $result = $this->findCustomerByEmail->find($customer->getEmail());
         if ($result !== null) {
             throw new ConflictException("User already exists");

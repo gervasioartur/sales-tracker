@@ -10,14 +10,9 @@
 <body>
 <div class="container mt-5">
     <h1>Create Customer</h1>
-    <!-- Exibição de erros de validação -->
-    @if ($errors->any())
+    @if (isset($error))
         <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+            {{ $error }}
         </div>
     @endif
 
@@ -38,6 +33,34 @@
         </div>
         <button type="submit" class="btn btn-primary">Create</button>
     </form>
+
+    <h2 class="mt-5">Customers</h2>
+    @if (isset($customers))
+        @if (count($customers) === 0)
+        <p>No customers found.</p>
+        @else
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($customers as $customer)
+                        <tr>
+                            <td>{{ $customer->getName() }}</td>
+                            <td>{{ $customer->getEmail() }}</td>
+                            <td>{{ $customer->getPhone() }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @endif
+        @endif
+</div>
 </div>
 </body>
 </html>

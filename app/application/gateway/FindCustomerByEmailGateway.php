@@ -2,9 +2,9 @@
 
 namespace App\application\gateway;
 
-use App\domain\entity\CustomerEntity;
+use App\domain\entity\Customer;
 
 interface FindCustomerByEmailGateway
 {
-    function find(string $email): ?CustomerEntity;
+    function find(string $email): ?Customer;
 }

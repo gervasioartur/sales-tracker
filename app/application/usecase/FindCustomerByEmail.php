@@ -3,7 +3,7 @@
 namespace App\application\usecase;
 
 use App\application\gateway\FindCustomerByEmailGateway;
-use App\domain\entity\CustomerEntity;
+use App\domain\entity\Customer;
 
 class FindCustomerByEmail
 {
@@ -14,7 +14,7 @@ class FindCustomerByEmail
         $this->gateway = $gateway;
     }
 
-    function find(string $email): ?CustomerEntity
+    function find(string $email): ?Customer
     {
         return $this->gateway->find($email);
     }

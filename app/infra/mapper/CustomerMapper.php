@@ -2,28 +2,37 @@
 
 namespace App\infra\mapper;
 
-use App\domain\entity\CustomerEntity;
-use App\infra\persistence\model\Customer;
+use App\domain\entity\Customer;
+use Illuminate\Http\Request;
 
 class CustomerMapper
 {
-    public function toEntity(array $model)
+    public function fromArray(array $data)
     {
-        return new CustomerEntity(
-            $model->name,
-            $model->email,
-            $model->phone,
-            $model->id,
-        );
+        return new Customer($data['id'], $data['name'], $data['email'], $data['phone']);
     }
 
-    public function toModel(CustomerEntity $entity)
+    public function formObj(object $customer)
     {
-        $model = new Customer();
-        $model->name = $entity->getName();
-        $model->email = $entity->getEmail();
-        $model->phone = $entity->getPhone();
-        $model->id = $entity->getId();
-        return $model;
+        return new Customer($customer->id, $customer->name, $customer->email, $customer->phone);
+    }
+
+    public function formEntity(Customer $customer)
+    {
+        return [
+            'id' => $customer->getId(),
+            'name' => $customer->getName(),
+            'email' => $customer->getEmail(),
+            'phone' => $customer->getPhone(),
+        ];
+    }
+
+    public function formRequest(Request $request)
+    {
+        return new Customer(
+            $request->input('name'),
+            $request->input('email'),
+            $request->input('phone')
+        );
     }
 }

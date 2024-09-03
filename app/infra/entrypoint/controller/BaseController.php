@@ -8,11 +8,7 @@ abstract class BaseController
 {
     function handle(Request $request)
     {
-        try {
-            return $this->perform($request);
-        } catch (\Exception $ex) {
-            return response($ex->getMessage(), 500);
-        }
+        return $this->perform($request);
     }
 
     abstract function perform(Request $request);

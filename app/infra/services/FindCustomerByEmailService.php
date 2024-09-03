@@ -3,24 +3,24 @@
 namespace App\infra\services;
 
 use App\application\gateway\FindCustomerByEmailGateway;
+use App\domain\entity\Customer;
 use App\domain\entity\CustomerEntity;
 use App\infra\mapper\CustomerMapper;
 use App\infra\persistence\repository\contract\CustomerRepository;
+use Illuminate\Support\Facades\Log;
+use PgSql\Lob;
 
 class FindCustomerByEmailService implements FindCustomerByEmailGateway
 {
     private CustomerRepository $repository;
-    private CustomerMapper $mapper;
 
-    public function __construct(CustomerRepository $repository, CustomerMapper $mapper)
+    public function __construct(CustomerRepository $repository)
     {
         $this->repository = $repository;
-        $this->mapper = $mapper;
     }
 
-    function find(string $email): ?CustomerEntity
+    function find(string $email): ?Customer
     {
-        $customer = $this->repository->findByEmail($email);
-        return $this->mapper->toEntity($customer);
+        return $this->repository->findByEmail($email);
     }
 }

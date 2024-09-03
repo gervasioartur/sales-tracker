@@ -2,7 +2,7 @@
 
 namespace App\domain\entity;
 
-class CustomerEntity
+class Customer
 {
     private $id;
     private $name;

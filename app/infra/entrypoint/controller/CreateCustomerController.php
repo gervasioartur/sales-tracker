@@ -2,10 +2,10 @@
 
 namespace App\infra\entrypoint\controller;
 
+use Exception;
 use App\application\usecase\CreateCustomer;
-use App\domain\entity\CustomerEntity;
+use App\application\usecase\ListCustomers;
 use App\infra\mapper\CustomerMapper;
-use Barryvdh\Debugbar\Facades\Debugbar;
 use Illuminate\Http\Request;
 
 
@@ -13,27 +13,30 @@ class CreateCustomerController extends BaseController
 {
     private CreateCustomer $usecase;
     private CustomerMapper $mapper;
+    private ListCustomers $listCustomers;
 
-    public function __construct(CreateCustomer $usecase, CustomerMapper $mapper)
+    public function __construct(CreateCustomer $usecase,ListCustomers $listCustomers, CustomerMapper $mapper)
     {
         $this->usecase = $usecase;
         $this->mapper = $mapper;
+        $this->listCustomers =  $listCustomers;
     }
+
+    public function index()
+    {
+        $customers = $this->listCustomers->list();
+        return view('customer.create', ['customers' => $customers]);
+    }
+
 
     function perform(Request $request)
     {
         try {
-            $customerEntity = new CustomerEntity(
-                $request->input('name'),
-                $request->input('email'),
-                $request->input('phone')
-            );
-
-            Debugbar::info("render");
-            $this->usecase->create($customerEntity);
-            return redirect()->back()->with('success', 'User successfully created.');
-        } catch (\Exception $ex) {
-            return redirect()->back()->with('error', $ex->getMessage());
+            $customer = $this->mapper->formRequest($request);
+            $this->usecase->create($customer);
+            return view('customer.create')->with('success', 'created');
+        } catch (Exception $ex) {
+            return view('customer.create')->with('error', $ex->getMessage());
         }
     }
 }
