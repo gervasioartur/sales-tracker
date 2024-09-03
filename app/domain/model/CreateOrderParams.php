@@ -5,7 +5,7 @@ class CreateOrderParams
 
 {
     private int $customerId;
-    private DateTime $orderDate;
+    private \DateTime $orderDate;
     private string $paymentMethod;
     /**
      * @var CreateOrderItemsParams[] $orderItems
@@ -71,7 +71,7 @@ class CreateOrderParams
     {
         foreach ($orderItems as $item) {
             if (!$item instanceof CreateOrderItemsParams) {
-                throw new InvalidArgumentException("Each item must be an instance of CreateOrderItemsParams");
+                throw new \InvalidArgumentException("Each item must be an instance of CreateOrderItemsParams");
             }
         }
         $this->orderItems = $orderItems;

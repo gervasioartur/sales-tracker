@@ -4,7 +4,6 @@ namespace App\infra\services;
 
 use App\application\gateway\customer\FindCustomerByEmailGateway;
 use App\domain\entity\Customer;
-use App\domain\entity\CustomerEntity;
 use App\infra\persistence\repository\contract\CustomerRepository;
 
 class FindCustomerByEmailService implements FindCustomerByEmailGateway

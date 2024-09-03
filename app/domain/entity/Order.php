@@ -8,7 +8,7 @@ class Order {
     private string $paymentMethod;
     private float $total;
 
-    public function __construct(int $customerId,DateTime $orderDate, string $paymentMethod)
+    public function __construct(int $customerId,\DateTime $orderDate, string $paymentMethod)
     {
         $this->customerId = $customerId;
         $this->orderDate = $orderDate;

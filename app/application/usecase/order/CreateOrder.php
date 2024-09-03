@@ -3,10 +3,9 @@
 namespace App\application\usecase\order;
 
 use App\application\gateway\order\CreateOrderGateway;
-use App\application\usecase\CreateOrderParams;
-use App\application\usecase\DateTime;
 use App\domain\entity\Order;
 use App\domain\entity\OrderItem;
+use App\domain\model\CreateOrderParams;
 
 class CreateOrder
 {
