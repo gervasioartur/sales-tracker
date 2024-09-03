@@ -21,7 +21,7 @@ class CreateOrder
     function create(CreateOrderParams $params): Order
     {
         $total = 0;
-        $order = new Order($params->getCustomerId(), new DateTime(), $params->getPaymentMethod());
+        $order = new Order($params->getCustomerId(), new \DateTime(), $params->getPaymentMethod());
         $order = $this->gateway->create($order);
 
         foreach ($params->getOrderItems() as $orderItemData) {

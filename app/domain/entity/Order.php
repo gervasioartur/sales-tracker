@@ -4,7 +4,7 @@ namespace App\domain\entity;
 class Order {
     private int $id;
     private int $customerId;
-    private DateTime $orderDate;
+    private \DateTime $orderDate;
     private string $paymentMethod;
     private float $total;
 
@@ -35,12 +35,12 @@ class Order {
         $this->customerId = $customerId;
     }
 
-    public function getOrderDate(): DateTime
+    public function getOrderDate(): \DateTime
     {
         return $this->orderDate;
     }
 
-    public function setOrderDate(DateTime $orderDate)
+    public function setOrderDate(\DateTime $orderDate)
     {
         $this->orderDate = $orderDate;
     }
