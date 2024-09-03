@@ -1,4 +1,6 @@
 <?php
+namespace App\domain\model;
+
 class CreateOrderItemsParams {
     private int $customerId;
     private int $productId;

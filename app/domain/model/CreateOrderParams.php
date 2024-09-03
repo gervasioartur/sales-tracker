@@ -1,5 +1,8 @@
 <?php
+namespace App\domain\model;
+
 class CreateOrderParams
+
 {
     private int $customerId;
     private DateTime $orderDate;
