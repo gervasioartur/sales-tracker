@@ -1,8 +1,8 @@
 <?php
 
-namespace App\application\usecase;
+namespace App\application\usecase\customer;
 
-use App\application\gateway\FindCustomerByEmailGateway;
+use App\application\gateway\customer\FindCustomerByEmailGateway;
 use App\domain\entity\Customer;
 
 class FindCustomerByEmail

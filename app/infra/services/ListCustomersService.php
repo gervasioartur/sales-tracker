@@ -2,7 +2,7 @@
 
 namespace App\infra\services;
 
-use App\application\gateway\ListCustomersGateway;
+use App\application\gateway\customer\ListCustomersGateway;
 use App\infra\persistence\repository\contract\CustomerRepository;
 
 

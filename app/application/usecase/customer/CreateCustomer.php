@@ -1,8 +1,8 @@
 <?php
 
-namespace App\application\usecase;
+namespace App\application\usecase\customer;
 
-use App\application\gateway\CreateCustomerGateway;
+use App\application\gateway\customer\CreateCustomerGateway;
 use App\domain\entity\Customer;
 use App\domain\exception\ConflictException;
 use Exception;

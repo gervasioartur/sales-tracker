@@ -1,6 +1,6 @@
 <?php
 
-namespace App\application\gateway;
+namespace App\application\gateway\order;
 
 use App\domain\entity\Order;
 

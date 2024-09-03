@@ -1,8 +1,8 @@
 <?php
 
-namespace App\application\usecase;
+namespace App\application\usecase\product;
 
-use App\application\gateway\FindProductByIdGateway;
+use App\application\gateway\product\FindProductByIdGateway;
 use App\domain\entity\Product;
 
 class FindProductById

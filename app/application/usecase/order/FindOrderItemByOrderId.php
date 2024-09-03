@@ -1,8 +1,8 @@
 <?php
 
-namespace App\application\usecase;
+namespace App\application\usecase\order;
 
-use App\application\gateway\FindOrderItemByOrderIdGateway;
+use App\application\gateway\order\FindOrderItemByOrderIdGateway;
 use App\domain\entity\OrderItem;
 
 class FindOrderItemByOrderId

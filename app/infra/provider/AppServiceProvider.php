@@ -2,9 +2,9 @@
 
 namespace App\infra\provider;
 
-use App\application\gateway\CreateCustomerGateway;
-use App\application\gateway\FindCustomerByEmailGateway;
-use App\application\gateway\ListCustomersGateway;
+use App\application\gateway\customer\CreateCustomerGateway;
+use App\application\gateway\customer\FindCustomerByEmailGateway;
+use App\application\gateway\customer\ListCustomersGateway;
 use App\infra\persistence\repository\contract\CustomerRepository;
 use App\infra\persistence\repository\impl\CustomerRepositoryImpl;
 use App\infra\services\CreateCustomerService;

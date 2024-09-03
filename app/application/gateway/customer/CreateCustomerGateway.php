@@ -1,6 +1,6 @@
 <?php
 
-namespace App\application\gateway;
+namespace App\application\gateway\customer;
 
 use App\domain\entity\Customer;
 use App\domain\entity\CustomerEntity;

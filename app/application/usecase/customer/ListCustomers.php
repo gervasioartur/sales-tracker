@@ -1,8 +1,8 @@
 <?php
 
-namespace App\application\usecase;
+namespace App\application\usecase\customer;
 
-use App\application\gateway\ListCustomersGateway;
+use App\application\gateway\customer\ListCustomersGateway;
 use App\domain\entity\Customer;
 
 class ListCustomers

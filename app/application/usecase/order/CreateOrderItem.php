@@ -1,8 +1,9 @@
 <?php
 
-namespace App\application\usecase;
+namespace App\application\usecase\order;
 
-use App\application\gateway\CreateOrderItemGateway;
+use App\application\gateway\order\CreateOrderItemGateway;
+use App\application\usecase\product\FindProductById;
 use App\domain\entity\OrderItem;
 
 

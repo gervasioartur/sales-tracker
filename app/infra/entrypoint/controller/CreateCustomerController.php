@@ -2,10 +2,10 @@
 
 namespace App\infra\entrypoint\controller;
 
-use Exception;
-use App\application\usecase\CreateCustomer;
-use App\application\usecase\ListCustomers;
+use App\application\usecase\customer\CreateCustomer;
+use App\application\usecase\customer\ListCustomers;
 use App\infra\mapper\CustomerMapper;
+use Exception;
 use Illuminate\Http\Request;
 
 

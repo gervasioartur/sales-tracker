@@ -1,6 +1,6 @@
 <?php
 
-namespace App\application\gateway;
+namespace App\application\gateway\product;
 
 
 use App\domain\entity\Product;

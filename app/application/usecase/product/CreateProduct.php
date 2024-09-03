@@ -1,8 +1,8 @@
 <?php
 
-namespace App\application\usecase;
+namespace App\application\usecase\product;
 
-use App\application\gateway\CreateProductGateway;
+use App\application\gateway\product\CreateProductGateway;
 use App\domain\entity\Product;
 
 

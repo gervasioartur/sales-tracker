@@ -2,7 +2,7 @@
 
 namespace App\infra\services;
 
-use App\application\gateway\CreateCustomerGateway;
+use App\application\gateway\customer\CreateCustomerGateway;
 use App\domain\entity\Customer;
 use App\infra\mapper\CustomerMapper;
 use App\infra\persistence\repository\contract\CustomerRepository;
