@@ -12,7 +12,7 @@ class CreateOrder
 {
     private CreateOrderGateway $gateway;
     private CreateOrderItem $createOrderItem;
-    private UpdateOrderGateway $updateOrder;
+    private UpdateOrder $updateOrder;
 
     public function __construct(CreateOrderGateway $gateway,
                                 CreateOrderItem $createOrderItem,
