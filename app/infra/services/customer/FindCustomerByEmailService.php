@@ -1,6 +1,6 @@
 <?php
 
-namespace App\infra\services;
+namespace App\infra\services\customer;
 
 use App\application\gateway\customer\FindCustomerByEmailGateway;
 use App\domain\entity\Customer;

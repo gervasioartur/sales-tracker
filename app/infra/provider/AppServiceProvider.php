@@ -7,9 +7,9 @@ use App\application\gateway\customer\FindCustomerByEmailGateway;
 use App\application\gateway\customer\ListCustomersGateway;
 use App\infra\persistence\repository\contract\CustomerRepository;
 use App\infra\persistence\repository\impl\CustomerRepositoryImpl;
-use App\infra\services\CreateCustomerService;
-use App\infra\services\FindCustomerByEmailService;
-use App\infra\services\ListCustomersService;
+use App\infra\services\customer\CreateCustomerService;
+use App\infra\services\customer\FindCustomerByEmailService;
+use App\infra\services\customer\ListCustomersService;
 use Carbon\Laravel\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider

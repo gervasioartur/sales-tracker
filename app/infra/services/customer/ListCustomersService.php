@@ -1,6 +1,6 @@
 <?php
 
-namespace App\infra\services;
+namespace App\infra\services\customer;
 
 use App\application\gateway\customer\ListCustomersGateway;
 use App\infra\persistence\repository\contract\CustomerRepository;
