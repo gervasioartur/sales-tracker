@@ -1,4 +1,6 @@
 <?php
+namespace App\domain\entity;
+
 class Order {
     private int $id;
     private int $customerId;

@@ -1,4 +1,8 @@
 <?php
+namespace App\domain\entity;
+
+namespace App\domain\entity;
+
 class Product {
     private int  $id;
     private string $nome;

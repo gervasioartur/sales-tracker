@@ -1,4 +1,6 @@
 <?php
+namespace App\domain\entity;
+
 class OrderItem {
     private int $orderId;
     private int $productId;
