@@ -10,14 +10,6 @@
 <body>
 <div class="container mt-5">
     <h1>Create Customer</h1>
-
-    <!-- Mensagem de sucesso -->
-    @if (session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
-
     <!-- Exibição de erros de validação -->
     @if ($errors->any())
         <div class="alert alert-danger">
@@ -30,7 +22,7 @@
     @endif
 
     <!-- Formulário de criação de cliente -->
-    <form action="" method="POST">
+    <form action="{{ route('customers.createCustomer') }}" method="POST">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Name</label>

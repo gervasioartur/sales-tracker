@@ -2,11 +2,20 @@
 
 namespace App\application\usecase;
 
-use App\domain\entity\Customer;
+use App\application\gateway\FindCustomerByEmailGateway;
+use App\domain\entity\CustomerEntity;
 
 class FindCustomerByEmail
 {
-   function create(Customer $customer): void{
+    private FindCustomerByEmailGateway $gateway;
 
-   }
+    public function __construct(FindCustomerByEmailGateway $gateway)
+    {
+        $this->gateway = $gateway;
+    }
+
+    function find(string $email): ?CustomerEntity
+    {
+        return $this->gateway->find($email);
+    }
 }

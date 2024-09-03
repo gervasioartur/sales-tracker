@@ -2,7 +2,9 @@
 
 namespace App\application\gateway;
 
-class FindCustomerByEmailGateway
-{
+use App\domain\entity\CustomerEntity;
 
+interface FindCustomerByEmailGateway
+{
+    function find(string $email): ?CustomerEntity;
 }

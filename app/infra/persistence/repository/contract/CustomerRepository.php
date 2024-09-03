@@ -1,11 +1,13 @@
 <?php
 
-namespace App\infra\repository\contract;
+namespace App\infra\persistence\repository\contract;
 
-use App\domain\entity\Customer;
+
+use App\infra\persistence\model\Customer;
 
 interface CustomerRepository
 {
-    function  create(Customer $customer): Customer;
-    function  findByEmail(string $email): Customer;
+    function create(array $data): Customer;
+
+    function findByEmail(string $email): Customer;
 }

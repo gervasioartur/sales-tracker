@@ -2,20 +2,18 @@
 
 namespace App\domain\entity;
 
-class Customer
+class CustomerEntity
 {
     private $id;
     private $name;
     private $email;
     private $phone;
-    private $address;
 
-    public function __construct($name, $email, $phone = null, $address = null)
+    public function __construct($name, $email, $phone)
     {
         $this->name = $name;
         $this->email = $email;
         $this->phone = $phone;
-        $this->address = $address;
     }
 
     public function getId()
@@ -56,15 +54,5 @@ class Customer
     public function setPhone($phone)
     {
         $this->phone = $phone;
-    }
-
-    public function getAddress()
-    {
-        return $this->address;
-    }
-
-    public function setAddress($address)
-    {
-        $this->address = $address;
     }
 }

@@ -2,7 +2,10 @@
 
 namespace App\domain\exception;
 
-class ConfictException
+class ConflictException extends \Exception
 {
-
+    public function __construct(string $message)
+    {
+        parent::__construct($message);
+    }
 }
