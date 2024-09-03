@@ -25,7 +25,18 @@ class ProductRepositoryImpl implements ProductRepository
 
     function find(int $productId): ?Product
     {
-        $product = DB::table('t_products')->where('id', $productId)->get();
+        $product = DB::table('t_products')->where('id', $productId)->first();
         return $this->mapper->formObj($product);
+    }
+
+    function list(): ?array
+    {
+        $products = DB::table('t_products')->get();
+        if ($products) {
+            return $products->map(function ($product) {
+                return $this->mapper->formObj($product);
+            })->toArray();
+        }
+        return null;
     }
 }

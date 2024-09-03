@@ -7,8 +7,8 @@ use App\domain\entity\OrderItem;
 
 interface FindOrderItemByOrderIdGateway
 {
-               /**
- * @return OrderItem[]|null
- */
+    /**
+     * @return OrderItem[]|null
+     */
     function find(int $orderId): ?array;
 }

@@ -2,12 +2,8 @@
 
 namespace App\infra\persistence\repository\impl;
 
-use App\domain\entity\Customer;
 use App\domain\entity\Order;
-use App\domain\entity\OrderItem;
-use App\infra\mapper\CustomerMapper;
 use App\infra\mapper\OrderMapper;
-use App\infra\persistence\repository\contract\CustomerRepository;
 use App\infra\persistence\repository\contract\OrderRepository;
 use Illuminate\Support\Facades\DB;
 
@@ -29,11 +25,11 @@ class OrderRepositoryImpl implements OrderRepository
 
     function update(Order $order): void
     {
-        DB::table('orders')
+        DB::table('t_orders')
             ->where('id', $order->getId())
             ->update([
-                'orderDate' => $order->getOrderDate(),
-                'paymentMethod' => $order->getPaymentMethod(),
+                'order_date' => $order->getOrderDate(),
+                'payment_method' => $order->getPaymentMethod(),
                 'total' => $order->getTotal(),
             ]);
     }

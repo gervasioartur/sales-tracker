@@ -12,9 +12,9 @@ class CreateProductService implements CreateProductGateway
     private ProductRepository $repository;
     private ProductMapper $mapper;
 
-    function __construct(ProductRepository $repository,ProductMapper $mapper)
+    function __construct(ProductRepository $repository, ProductMapper $mapper)
     {
-        $this->repository= $repository;
+        $this->repository = $repository;
         $this->mapper = $mapper;
     }
 

@@ -1,7 +1,9 @@
 <?php
+
 namespace App\domain\entity;
 
-class OrderItem {
+class OrderItem
+{
     private int $id;
     private int $orderId;
     private int $productId;
@@ -9,21 +11,23 @@ class OrderItem {
     private float $unitPrice;
     private float $subTotal;
 
-    public function __construct(int $orderId,int $productId, float $amount)
+    public function __construct(int $orderId, int $productId, float $amount)
     {
         $this->orderId = $orderId;
         $this->productId = $productId;
         $this->amount = $amount;
     }
 
-    public function getId(): int {
+    public function getId(): int
+    {
         return $this->id;
     }
 
-    public function setId(int $id): void {
+    public function setId(int $id): void
+    {
         $this->id = $id;
     }
-    
+
     public function getOrderId(): int
     {
         return $this->orderId;

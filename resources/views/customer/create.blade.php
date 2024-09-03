@@ -54,12 +54,23 @@
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('orders.index') }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
+                        </a>
+                    </li>
                 </ul>
                 <hr>
             </div>
         </div>
         <div class="p-5 m-5 col py-3">
             <h1>Create Customer</h1>
+            @if (isset($success))
+                <div class="alert alert-success">
+                    {{ $success }}
+                </div>
+            @endif
+
             @if (isset($error))
                 <div class="alert alert-danger">
                     {{ $error }}

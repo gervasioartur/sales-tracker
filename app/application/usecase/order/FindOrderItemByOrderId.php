@@ -14,9 +14,9 @@ class FindOrderItemByOrderId
         $this->gateway = $gateway;
     }
 
-           /**
- * @return OrderItem[]|null
- */
+    /**
+     * @return OrderItem[]|null
+     */
     function find(int $orderId): ?array
     {
         return $this->gateway->find($orderId);

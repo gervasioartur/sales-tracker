@@ -4,25 +4,13 @@ namespace App\domain\model;
 
 class CreateOrderItemsParams
 {
-    private int $customerId;
     private int $productId;
-    private float $amount;
+    private int $amount;
 
-    public function __construct(int $customerId, int $productId, float $amount)
+    public function __construct(int $productId, int $amount)
     {
-        $this->customerId = $customerId;
         $this->productId = $productId;
         $this->amount = $amount;
-    }
-
-    public function getCustomerId(): int
-    {
-        return $this->customerId;
-    }
-
-    public function setCustomerId(int $customerId): void
-    {
-        $this->customerId = $customerId;
     }
 
     public function getProductId(): int
@@ -35,12 +23,12 @@ class CreateOrderItemsParams
         $this->productId = $productId;
     }
 
-    public function getAmount(): float
+    public function getAmount(): int
     {
         return $this->amount;
     }
 
-    public function setAmount(float $amount): void
+    public function setAmount(int $amount): void
     {
         $this->amount = $amount;
     }

@@ -14,11 +14,11 @@ class ListCustomers
         $this->gateway = $gateway;
     }
 
-   /**
- * @return Customer[]|null
- */
-public function list(): ?array
-{
-    return $this->gateway->list();
-}
+    /**
+     * @return Customer[]|null
+     */
+    public function list(): ?array
+    {
+        return $this->gateway->list();
+    }
 }

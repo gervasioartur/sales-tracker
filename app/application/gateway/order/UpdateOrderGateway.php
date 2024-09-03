@@ -6,5 +6,5 @@ use App\domain\entity\Order;
 
 interface UpdateOrderGateway
 {
-    function  update(Order $order): void;
+    function update(Order $order): void;
 }

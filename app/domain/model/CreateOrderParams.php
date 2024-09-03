@@ -1,29 +1,27 @@
 <?php
+
 namespace App\domain\model;
 
 class CreateOrderParams
 
 {
     private int $customerId;
-    private \DateTime $orderDate;
     private string $paymentMethod;
     /**
      * @var CreateOrderItemsParams[] $orderItems
      */
     private array $orderItems;
+
     /**
      * @param CreateOrderItemsParams[] $orderItems
      */
     public function __construct(
-        int $customerId,
-        \DateTime $orderDate,
+        int    $customerId,
         string $paymentMethod,
-        array $orderItems
-    ) {
+    )
+    {
         $this->customerId = $customerId;
-        $this->orderDate = $orderDate;
         $this->paymentMethod = $paymentMethod;
-        $this->orderItems = $orderItems;
     }
 
     public function getCustomerId()
@@ -34,16 +32,6 @@ class CreateOrderParams
     public function setCustomerId($customerId)
     {
         $this->customerId = $customerId;
-    }
-
-    public function getOrderDate()
-    {
-        return $this->orderDate;
-    }
-
-    public function setOrderDate($orderDate)
-    {
-        $this->orderDate = $orderDate;
     }
 
     public function getPaymentMethod()

@@ -10,9 +10,9 @@ class FindOrderItemByOrderIdService implements FindOrderItemByOrderIdGateway
 {
     private OrderItemRepository $repository;
 
-    function  __construct(OrderItemRepository $repository)
+    function __construct(OrderItemRepository $repository)
     {
-        $this->$repository =  $repository;
+        $this->repository = $repository;
     }
 
     /**

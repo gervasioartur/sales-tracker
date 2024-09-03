@@ -8,5 +8,6 @@ use App\domain\entity\Order;
 interface OrderRepository
 {
     function create(array $data): Order;
-    function  update(Order $order): void;
+
+    function update(Order $order): void;
 }

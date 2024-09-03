@@ -54,6 +54,11 @@
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('orders.index') }}" class="nav-link align-middle px-0">
+                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
+                        </a>
+                    </li>
                 </ul>
                 <hr>
             </div>

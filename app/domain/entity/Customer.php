@@ -46,7 +46,7 @@ class Customer
         $this->email = $email;
     }
 
-    public function getPhone() : string
+    public function getPhone(): string
     {
         return $this->phone;
     }

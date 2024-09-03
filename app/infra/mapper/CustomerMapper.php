@@ -14,7 +14,9 @@ class CustomerMapper
 
     public function formObj(object $customer)
     {
-        return new Customer($customer->id, $customer->name, $customer->email, $customer->phone);
+        $customerEntity = new Customer($customer->name, $customer->email, $customer->phone);
+        $customerEntity->setId($customer->id);
+        return $customerEntity;;
     }
 
     public function formEntity(Customer $customer)

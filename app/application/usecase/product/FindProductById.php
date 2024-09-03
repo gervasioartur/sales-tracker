@@ -19,3 +19,4 @@ class FindProductById
         return $this->gateway->find($productId);
     }
 }
+

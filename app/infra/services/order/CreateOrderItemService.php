@@ -4,19 +4,23 @@ namespace App\infra\services\order;
 
 use App\application\gateway\order\CreateOrderItemGateway;
 use App\domain\entity\OrderItem;
+use App\infra\mapper\OrderItemMapper;
 use App\infra\persistence\repository\contract\OrderItemRepository;
-use App\infra\persistence\repository\contract\OrderRepository;
 
 class CreateOrderItemService implements CreateOrderItemGateway
 {
-    private OrderRepository $repository;
-    function __construct(OrderItemRepository $repository)
+    private OrderItemRepository $repository;
+    private OrderItemMapper $mapper;
+
+    function __construct(OrderItemRepository $repository, OrderItemMapper $mapper)
     {
-        $this->repository= $repository;
+        $this->repository = $repository;
+        $this->mapper = $mapper;
     }
 
     function create(OrderItem $orderItem): OrderItem
     {
-        return $this->repository->create($orderItem);
+        $data = $this->mapper->formEntity($orderItem);
+        return $this->repository->create($data);
     }
 }

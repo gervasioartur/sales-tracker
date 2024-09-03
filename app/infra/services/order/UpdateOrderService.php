@@ -7,13 +7,13 @@ use App\domain\entity\Order;
 use App\domain\entity\OrderItem;
 use App\infra\persistence\repository\contract\OrderRepository;
 
-class UpdateOrderIdService implements UpdateOrderGateway
+class UpdateOrderService implements UpdateOrderGateway
 {
     private OrderRepository $repository;
 
-    function  __construct(OrderRepository $repository)
+    function __construct(OrderRepository $repository)
     {
-        $this->$repository =  $repository;
+        $this->repository = $repository;
     }
 
     /**

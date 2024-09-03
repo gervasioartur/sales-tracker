@@ -2,12 +2,12 @@
 
 namespace App\application\gateway\customer;
 
-use App\domain\entity\Customer;
+use App\domain\entity\Product;
 
-interface ListCustomersGateway
+interface ListProductsGateway
 {
     /**
-     * @return Customer[]|null
+     * @return Product[]|null
      */
     function list(): ?array;
 }

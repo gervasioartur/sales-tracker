@@ -14,7 +14,8 @@ class UpdateOrder
         $this->gateway = $gateway;
     }
 
-    function  update(Order $order){
+    function update(Order $order)
+    {
         $this->gateway->update($order);
     }
 }

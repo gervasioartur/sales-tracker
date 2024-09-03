@@ -1,21 +1,23 @@
 <?php
+
 namespace App\domain\entity;
 
-class Order {
+class Order
+{
     private int $id;
     private int $customerId;
     private \DateTime $orderDate;
     private string $paymentMethod;
     private float $total;
 
-    public function __construct(int $customerId,\DateTime $orderDate, string $paymentMethod)
+    public function __construct(int $customerId, \DateTime $orderDate, string $paymentMethod)
     {
         $this->customerId = $customerId;
         $this->orderDate = $orderDate;
         $this->paymentMethod = $paymentMethod;
     }
 
-    public function getId():int
+    public function getId(): int
     {
         return $this->id;
     }
@@ -25,7 +27,7 @@ class Order {
         $this->id = $id;
     }
 
-    public function getCustomerId() :string
+    public function getCustomerId(): string
     {
         return $this->customerId;
     }
@@ -45,7 +47,7 @@ class Order {
         $this->orderDate = $orderDate;
     }
 
-    public function getPaymentMethod() : string
+    public function getPaymentMethod(): string
     {
         return $this->paymentMethod;
     }

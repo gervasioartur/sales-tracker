@@ -2,13 +2,12 @@
 
 namespace App\infra\services\product;
 
-use App\application\gateway\product\FindProductByIdGateway;
+use App\application\gateway\customer\ListProductsGateway;
 use App\domain\entity\Product;
 use App\infra\persistence\repository\contract\ProductRepository;
 
-class FindProductByIdService implements FindProductByIdGateway
+class ListProductsService implements ListProductsGateway
 {
-
     private ProductRepository $repository;
 
     function __construct(ProductRepository $repository)
@@ -16,8 +15,11 @@ class FindProductByIdService implements FindProductByIdGateway
         $this->repository = $repository;
     }
 
-    function find(int $productId): ?Product
+    /**
+     * @return Product[]|null
+     */
+    function list(): ?array
     {
-        return $this->repository->find($productId);
+        return $this->repository->list();
     }
 }

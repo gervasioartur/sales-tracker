@@ -16,18 +16,18 @@ class CreateOrderItem
     public function __construct(
         CreateOrderItemGateway $gateway,
         FindOrderItemByOrderId $findOrderItemByOrderId,
-        FindProductById $findProductById
+        FindProductById        $findProductById
     )
     {
         $this->gateway = $gateway;
-        $this->findOrderItemByOrderId =  $findOrderItemByOrderId;
-        $this->findProductById =  $findProductById;
+        $this->findOrderItemByOrderId = $findOrderItemByOrderId;
+        $this->findProductById = $findProductById;
     }
 
     function create(OrderItem $orderItem): OrderItem
     {
         $orderItems = $this->findOrderItemByOrderId->find($orderItem->getOrderId());
-        if($orderItem){
+        if ($orderItem) {
             $productIdToCheck = $orderItem->getProductId();
             for ($i = 0; $i < count($orderItems); $i++) {
                 if ($orderItems[$i]->getProductId() == $productIdToCheck) {
@@ -37,8 +37,8 @@ class CreateOrderItem
         }
 
         $product = $this->findProductById->find($orderItem->getProductId());
-        if(!$product) throw new \Exception('Product with code {$productIdToCheck} not found.');
-        $orderItem->setSubTotal($product->getPrice()*$orderItem->getAmount());
+        if (!$product) throw new \Exception('Product with code {$productIdToCheck} not found.');
+        $orderItem->setSubTotal($product->getPrice() * $orderItem->getAmount());
         $orderItem->setUnitPrice($product->getPrice());
         return $this->gateway->create($orderItem);
     }

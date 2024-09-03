@@ -1,10 +1,12 @@
 <?php
-namespace App\domain\entity;
 
 namespace App\domain\entity;
 
-class Product {
-    private int  $id;
+namespace App\domain\entity;
+
+class Product
+{
+    private int $id;
     private string $name;
     private string $desc;
     private float $price;

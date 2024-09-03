@@ -7,7 +7,7 @@ use App\domain\entity\OrderItem;
 
 class OrderItemMapper
 {
-    public function fromArray(array $data) : OrderItem
+    public function fromArray(array $data): OrderItem
     {
         $orderItem = new OrderItem($data['order_id'], $data['product_id'], $data['amount']);
         $orderItem->setId($data['id']);
@@ -16,12 +16,23 @@ class OrderItemMapper
         return $orderItem;
     }
 
-    public function formObj(object $orderItem) : OrderItem
+    public function formEntity(OrderItem $orderItem): array
     {
-        $$orderItem = new OrderItem($orderItem->id, $orderItem->product_id, $orderItem->amount);
-        $orderItem->setId($orderItem->id);
-        $orderItem->setUnitPrice($orderItem->unit_price);
-        $orderItem->setSubTotal($orderItem->sub_total);
-        return $orderItem;
+        return [
+            'order_id' => $orderItem->getOrderId(),
+            'product_id' => $orderItem->getProductId(),
+            'amount' => $orderItem->getAmount(),
+            'unit_price' => $orderItem->getUnitPrice(),
+            'sub_total' => $orderItem->getSubTotal(),
+        ];
+    }
+
+    public function formObj(object $orderItem): OrderItem
+    {
+        $orderItemEntity = new OrderItem($orderItem->id, $orderItem->product_id, $orderItem->amount);
+        $orderItemEntity->setId($orderItem->id);
+        $orderItemEntity->setUnitPrice($orderItem->unit_price);
+        $orderItemEntity->setSubTotal($orderItem->sub_total);
+        return $orderItemEntity;
     }
 }
