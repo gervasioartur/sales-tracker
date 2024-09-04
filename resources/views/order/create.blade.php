@@ -40,6 +40,7 @@
             justify-content: space-between;
             align-items: center;
             padding: 10px 0;
+            margin-bottom: 8px;
         }
 
         .product-row div {
@@ -90,12 +91,52 @@
             flex-direction: column;
         }
 
+        .product-row{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
         .instalmentItem {
             width: 100%;
             display: flex;
             flex-direction: row;
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
     </style>
 </head>
@@ -103,29 +144,7 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Sales Tracker</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="{{ route('customers.index') }}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Customers</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('products.index') }}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('orders.index') }}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-            </div>
+            @include('components.sidebar')
         </div>
         <div class="p-5 m-5 col py-3">
             <h1>Create Order</h1>
@@ -178,7 +197,7 @@
                         </select>
                     </div>
 
-                    <div id="orderItems">
+                    <div id="orderItems" class="bg-info bg-gradient">
                         <!-- Dynamic product quantity fields will be added here -->
                     </div>
                 </div>
@@ -227,7 +246,7 @@
 
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
-            <h2 class="mt-5">Products</h2>
+            <h2 class="mt-5">Orders</h2>
             @if (isset($orders))
                 @if (count($orders) === 0)
                     <p>No customers found.</p>
@@ -241,6 +260,7 @@
                             <th>Payment Method</th>
                             <th>Payment Type</th>
                             <th>Total</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -252,10 +272,45 @@
                                 <td>{{ $order->getPaymentMethod() }}</td>
                                 <td>{{ $order->getPaymentType() }}</td>
                                 <td>R$ {{ $order->getTotal() }}</td>
+                                <td><button  class="openModalBtn btn btn-success"><i class="fas fa-eye"></i></button></td>
                             </tr>
                         @endforeach
                         </tbody>
                     </table>
+
+                    <div id="myModal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <h2>Order</h2>
+                            <hr/>
+                            <div>
+                                <div>
+                                    <div>
+                                        <label><b>Customer :</b></label>
+                                        <span>Joao da silva campos</span>
+                                    </div>
+                                    <div>
+                                        <label><b>Oder date :</b></label>
+                                        <span>Joao da silva campos</span>
+                                    </div>
+                                    <div>
+                                        <label><b>Payment Method :</b></label>
+                                        <span>Joao da silva campos</span>
+                                    </div>
+                                    <div>
+                                        <label><b>Payment Type :</b></label>
+                                        <span>Joao da silva campos</span>
+                                    </div>
+                                    <div>
+                                        <label><b>Total :</b></label>
+                                        <span>Joao da silva campos</span>
+                                    </div>
+                                </div>
+                                <h2>Installments</h2>
+                                <hr/>
+                            </div>
+                        </div>
+                    </div>
                 @endif
             @endif
         </div>
@@ -268,6 +323,33 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
+    // Obter o modal
+    var modal = document.getElementById("myModal");
+
+    // Obter o botão que abre o modal
+    var btn = document.getElementById("openModalBtn");
+
+    // Obter o elemento <span> que fecha o modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // Quando o usuário clica no botão, abre o modal
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
+    // Quando o usuário clica em <span> (x), fecha o modal
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+
+    // Quando o usuário clica fora do modal, fecha o modal
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+
     document.addEventListener('DOMContentLoaded', function () {
         const paymentMethodSelect = document.getElementById('paymentMethod');
         const paymentTypeContainer = document.getElementById('paymentTypeContainer');
@@ -354,8 +436,9 @@
                 productDiv.appendChild(productDivInput);
                 row.appendChild(productDiv);
 
-                const nameDiv = document.createElement('div');
-                nameDiv.textContent = `Name: ${productName}`;
+                const nameDiv = document.createElement('span');
+                nameDiv.style.width='150px'
+                nameDiv.textContent = `${productName}`;
                 row.appendChild(nameDiv);
 
                 const priceDiv = document.createElement('div');
@@ -384,7 +467,7 @@
 
                 const removeBtnDiv = document.createElement('div');
                 const removeBtn = document.createElement('button');
-                removeBtn.className = 'remove-btn';
+                removeBtn.className = 'btn btn-danger';
                 removeBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
                 removeBtn.addEventListener('click', function () {
                     row.remove();
@@ -441,7 +524,8 @@
                 paymentDetailsDiv.style.display = 'block';
                 for (let i = 1; i <= installments; i++) {
                     const div = document.createElement('div');
-                    div.className = 'instalmentItem';
+                    div.className = `instalmentItem p-2`;
+                    if(i%2!=0)  div.className += ` bg-secondary`;
                     div.style.display = 'flex'
                     div.style.flexDirection = 'row'
                     div.style.justifyContent = 'space-between'

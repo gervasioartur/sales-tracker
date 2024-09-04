@@ -6,6 +6,7 @@
     <title>Create Customer</title>
     <!-- Inclua o Bootstrap para estilização rápida -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
     <style>
         /* Estilos personalizados para o menu lateral */
         .sidebar {
@@ -39,30 +40,9 @@
 <div class="container-fluid">
     <div class="row flex-nowrap">
         <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
-            <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100">
-                <a href="/" class="d-flex align-items-center pb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                    <span class="fs-5 d-none d-sm-inline">Sales Tracker</span>
-                </a>
-                <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
-                    <li class="nav-item">
-                        <a href="{{ route('customers.index') }}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Customers</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('products.index') }}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('orders.index') }}" class="nav-link align-middle px-0">
-                            <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Orders</span>
-                        </a>
-                    </li>
-                </ul>
-                <hr>
-            </div>
+            @include('components.sidebar')
         </div>
+
         <div class="p-5 m-5 col py-3">
             <h1>Create Customer</h1>
             @if (isset($success))
@@ -107,6 +87,7 @@
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -115,6 +96,7 @@
                                 <td>{{ $customer->getName() }}</td>
                                 <td>{{ $customer->getEmail() }}</td>
                                 <td>{{ $customer->getPhone() }}</td>
+                                <td><button class="btn btn-success"><i class="fas fa-eye"></i></button></td>
                             </tr>
                         @endforeach
                         </tbody>
