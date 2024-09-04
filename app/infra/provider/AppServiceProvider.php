@@ -6,6 +6,7 @@ use App\application\gateway\customer\CreateCustomerGateway;
 use App\application\gateway\customer\FindCustomerByEmailGateway;
 use App\application\gateway\customer\ListCustomersGateway;
 use App\application\gateway\customer\ListProductsGateway;
+use App\application\gateway\order\CreateInstallmentGateway;
 use App\application\gateway\order\CreateOrderGateway;
 use App\application\gateway\order\CreateOrderItemGateway;
 use App\application\gateway\order\FindOrderItemByOrderIdGateway;
@@ -13,16 +14,19 @@ use App\application\gateway\order\UpdateOrderGateway;
 use App\application\gateway\product\CreateProductGateway;
 use App\application\gateway\product\FindProductByIdGateway;
 use App\infra\persistence\repository\contract\CustomerRepository;
+use App\infra\persistence\repository\contract\InstalmentRepository;
 use App\infra\persistence\repository\contract\OrderItemRepository;
 use App\infra\persistence\repository\contract\OrderRepository;
 use App\infra\persistence\repository\contract\ProductRepository;
 use App\infra\persistence\repository\impl\CustomerRepositoryImpl;
+use App\infra\persistence\repository\impl\InstalmentRepositoryImpl;
 use App\infra\persistence\repository\impl\OrderItemRepositoryImpl;
 use App\infra\persistence\repository\impl\OrderRepositoryImpl;
 use App\infra\persistence\repository\impl\ProductRepositoryImpl;
 use App\infra\services\customer\CreateCustomerService;
 use App\infra\services\customer\FindCustomerByEmailService;
 use App\infra\services\customer\ListCustomersService;
+use App\infra\services\order\CreateInstallmentService;
 use App\infra\services\order\CreateOrderItemService;
 use App\infra\services\order\CreateOrderService;
 use App\infra\services\order\FindOrderItemByOrderIdService;
@@ -60,6 +64,10 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(CreateOrderItemGateway::class, CreateOrderItemService::class);
         $this->app->bind(FindOrderItemByOrderIdGateway::class, FindOrderItemByOrderIdService::class);
         $this->app->bind(OrderItemRepository::class, OrderItemRepositoryImpl::class);
+
+//      Installment
+        $this->app->bind(CreateInstallmentGateway::class, CreateInstallmentService::class);
+        $this->app->bind(InstalmentRepository::class, InstalmentRepositoryImpl::class);
     }
 
     /**

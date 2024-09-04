@@ -4,6 +4,7 @@ namespace App\infra\mapper;
 
 
 use App\domain\entity\Order;
+use App\domain\model\CreateInstallmentParams;
 use App\domain\model\CreateOrderItemsParams;
 use App\domain\model\CreateOrderParams;
 use Illuminate\Http\Request;
@@ -43,6 +44,15 @@ class OrderMapper
             $orderItems[] = $itemEntity;
         }
 
+        $createInstallmentParams = [];
+        foreach ($request->input('installments') as $index => $installment) {
+            $value = $installment['value'];
+            $dueDate = $installment['dueDate'];
+            $createInstallmentParam = new  CreateInstallmentParams($value, new \DateTime($dueDate));
+            $createInstallmentParams[] = $createInstallmentParam;
+        }
+
+        $createOrderItemParam->setInstallments($createInstallmentParams);
         $createOrderItemParam->setOrderItems($orderItems);
         return $createOrderItemParam;
     }

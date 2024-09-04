@@ -13,55 +13,57 @@ class CreateOrderParams
     private array $orderItems;
 
     /**
-     * @param CreateOrderItemsParams[] $orderItems
+     * @var CreateInstallmentParams[] $installments
      */
-    public function __construct(
-        int    $customerId,
-        string $paymentMethod,
-    )
+    private array $installments;
+
+    public function __construct(int $customerId, string $paymentMethod)
     {
         $this->customerId = $customerId;
         $this->paymentMethod = $paymentMethod;
     }
 
-    public function getCustomerId()
+    // Getter e Setter para customerId
+    public function getCustomerId(): int
     {
         return $this->customerId;
     }
 
-    public function setCustomerId($customerId)
+    public function setCustomerId(int $customerId): void
     {
         $this->customerId = $customerId;
     }
 
-    public function getPaymentMethod()
+    // Getter e Setter para paymentMethod
+    public function getPaymentMethod(): string
     {
         return $this->paymentMethod;
     }
 
-    public function setPaymentMethod($paymentMethod)
+    public function setPaymentMethod(string $paymentMethod): void
     {
         $this->paymentMethod = $paymentMethod;
     }
 
-    /**
-     * @return CreateOrderItemsParams[]
-     */
+    // Getter e Setter para orderItems
     public function getOrderItems(): array
     {
         return $this->orderItems;
     }
 
-    /**
-     * @param CreateOrderItemsParams[] $orderItems
-     */
     public function setOrderItems(array $orderItems): void
     {
-        foreach ($orderItems as $item) {
-            if (!$item instanceof CreateOrderItemsParams) {
-                throw new \InvalidArgumentException("Each item must be an instance of CreateOrderItemsParams");
-            }
-        }
         $this->orderItems = $orderItems;
+    }
+
+    // Getter e Setter para installments
+    public function getInstallments(): array
+    {
+        return $this->installments;
+    }
+
+    public function setInstallments(array $installments): void
+    {
+        $this->installments = $installments;
     }
 }
