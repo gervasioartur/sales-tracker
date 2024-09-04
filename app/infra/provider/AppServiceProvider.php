@@ -10,6 +10,7 @@ use App\application\gateway\order\CreateInstallmentGateway;
 use App\application\gateway\order\CreateOrderGateway;
 use App\application\gateway\order\CreateOrderItemGateway;
 use App\application\gateway\order\FindOrderItemByOrderIdGateway;
+use App\application\gateway\order\ListOrdersGateway;
 use App\application\gateway\order\UpdateOrderGateway;
 use App\application\gateway\product\CreateProductGateway;
 use App\application\gateway\product\FindProductByIdGateway;
@@ -30,6 +31,7 @@ use App\infra\services\order\CreateInstallmentService;
 use App\infra\services\order\CreateOrderItemService;
 use App\infra\services\order\CreateOrderService;
 use App\infra\services\order\FindOrderItemByOrderIdService;
+use App\infra\services\order\ListOrdersService;
 use App\infra\services\order\UpdateOrderService;
 use App\infra\services\product\CreateProductService;
 use App\infra\services\product\FindProductByIdService;
@@ -57,6 +59,7 @@ class AppServiceProvider extends ServiceProvider
 
 //      Order
         $this->app->bind(CreateOrderGateway::class, CreateOrderService::class);
+        $this->app->bind(ListOrdersGateway::class, ListOrdersService::class);
         $this->app->bind(UpdateOrderGateway::class, UpdateOrderService::class);
         $this->app->bind(OrderRepository::class, OrderRepositoryImpl::class);
 

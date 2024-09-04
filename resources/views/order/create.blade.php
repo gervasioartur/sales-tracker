@@ -114,7 +114,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('products.create') }}" class="nav-link align-middle px-0">
+                        <a href="{{ route('products.index') }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
                         </a>
                     </li>
@@ -227,6 +227,37 @@
 
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
+            <h2 class="mt-5">Products</h2>
+            @if (isset($orders))
+                @if (count($orders) === 0)
+                    <p>No customers found.</p>
+                @else
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Customer Name</th>
+                            <th>Order Date</th>
+                            <th>Payment Method</th>
+                            <th>Payment Type</th>
+                            <th>Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($orders as $order)
+                            <tr>
+                                <td>{{ $order->getId() }}</td>
+                                <td>{{ $order->getCustomerName() }}</td>
+                                <td>{{ $order->getOrderDate()->format('d/m/Y H:i') }}</td>
+                                <td>{{ $order->getPaymentMethod() }}</td>
+                                <td>{{ $order->getPaymentType() }}</td>
+                                <td>R$ {{ $order->getTotal() }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            @endif
         </div>
     </div>
 </div>
@@ -428,17 +459,6 @@
                     if (i !== 1) dueDateAux.setMonth(dueDateAux.getMonth() + i);
                     dueDate.textContent = dueDateAux.toLocaleDateString();
                     div.appendChild(dueDate);
-
-                    // const dueDateDiv = document.createElement('div');
-                    // const dueDateDivInput = document.createElement('input');
-                    // dueDateDivInput.setAttribute('type', 'datetime');
-                    // dueDateDivInput.setAttribute('name', `orderItems[${dueDate}][productId]`);
-                    // dueDateDivInput.setAttribute('value', productId);
-                    // dueDateDivInput.className = 'form-control';
-                    // productDiv.textContent = 'ProductId: ';
-                    // productDiv.style.display = 'none';
-                    // productDiv.appendChild(productDivInput);
-                    // row.appendChild(productDiv);
 
                     paymentDetailsDiv.appendChild(div);
 

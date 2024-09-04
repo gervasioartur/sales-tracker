@@ -32,11 +32,6 @@ class ProductRepositoryImpl implements ProductRepository
     function list(): ?array
     {
         $products = DB::table('t_products')->get();
-        if ($products) {
-            return $products->map(function ($product) {
-                return $this->mapper->formObj($product);
-            })->toArray();
-        }
-        return null;
+        return $products?->map(fn($product) => $this->mapper->formObj($product))->toArray();
     }
 }

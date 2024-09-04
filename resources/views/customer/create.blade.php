@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('products.create') }}" class="nav-link align-middle px-0">
+                        <a href="{{ route('products.index') }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
                         </a>
                     </li>
@@ -104,7 +104,6 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
-                            <th></th>
                             <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>

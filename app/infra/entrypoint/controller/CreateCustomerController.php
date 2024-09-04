@@ -28,13 +28,13 @@ class CreateCustomerController extends BaseController
         return view('customer.create', ['customers' => $customers]);
     }
 
-
     function perform(Request $request)
     {
         try {
             $customer = $this->mapper->formRequest($request);
             $this->usecase->create($customer);
-            return view('customer.create')->with('success', 'created');
+            $customers = $this->listCustomers->list();
+            return view('customer.create', ['success' => 'Created', 'customers' => $customers]);
         } catch (Exception $ex) {
             return view('customer.create')->with('error', $ex->getMessage());
         }

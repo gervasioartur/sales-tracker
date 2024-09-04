@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="{{ route('products.create') }}" class="nav-link align-middle px-0">
+                        <a href="{{ route('products.index') }}" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Products</span>
                         </a>
                     </li>
@@ -95,6 +95,32 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Create</button>
             </form>
+
+            <h2 class="mt-5">Products</h2>
+            @if (isset($products))
+                @if (count($products) === 0)
+                    <p>No customers found.</p>
+                @else
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Description</th>
+                            <th>Price</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach ($products as $prodcut)
+                            <tr>
+                                <td>{{ $prodcut->getName() }}</td>
+                                <td>{{ $prodcut->getDesc() }}</td>
+                                <td>R${{ $prodcut->getPrice() }}</td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+                @endif
+            @endif
         </div>
     </div>
 </div>

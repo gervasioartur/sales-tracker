@@ -29,8 +29,6 @@ class OrderItemRepositoryImpl implements OrderItemRepository
     function findByOrderId(int $orderId): ?array
     {
         $orderItems = DB::table('t_order_items')->where('order_id', $orderId)->get();
-        return $orderItems?->map(function ($orderItem) {
-            return $this->mapper->formObj($orderItem);
-        })->toArray();
+        return $orderItems?->map(fn($orderItem) => $this->mapper->formObj($orderItem))->toArray();
     }
 }

@@ -22,7 +22,6 @@ class CustomerMapper
     public function formEntity(Customer $customer)
     {
         return [
-            'id' => $customer->getId(),
             'name' => $customer->getName(),
             'email' => $customer->getEmail(),
             'phone' => $customer->getPhone(),

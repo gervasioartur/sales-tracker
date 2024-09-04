@@ -3,6 +3,7 @@
 use App\infra\entrypoint\controller\CreateCustomerController;
 use App\infra\entrypoint\controller\CreateOrderController;
 use Illuminate\Support\Facades\Route;
+use \App\infra\entrypoint\controller\CreateProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -10,11 +11,7 @@ Route::get('/', function () {
 
 // customer
 Route::get('/customers/create', [CreateCustomerController::class, 'index'])->name('customers.index');
-
-Route::get('/products/create', function () {
-    return view('product.create');
-})->name('products.create');
-
 //order
 Route::get('/orders/create', [CreateOrderController::class, 'index'])->name('orders.index');
-
+//products
+Route::get('/products/create', [CreateProductController::class, 'index'])->name('products.index');

@@ -7,6 +7,7 @@ use App\domain\entity\Order;
 use App\domain\model\CreateInstallmentParams;
 use App\domain\model\CreateOrderItemsParams;
 use App\domain\model\CreateOrderParams;
+use App\domain\model\OrderModel;
 use Illuminate\Http\Request;
 
 class OrderMapper
@@ -17,6 +18,18 @@ class OrderMapper
         $order->setId($data['id']);
         $order->setTotal($data['total']);
         return $order;
+    }
+
+    public function toOrderModel(object $data): OrderModel
+    {
+        return new OrderModel(
+            $data->id,
+            $data->customer_name,
+            new \DateTime($data->order_date),
+            $data->payment_method,
+            $data->payment_type,
+            $data->total
+        );
     }
 
     public function fromEntity(Order $order): array

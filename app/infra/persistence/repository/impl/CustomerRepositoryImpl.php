@@ -19,6 +19,7 @@ class CustomerRepositoryImpl implements CustomerRepository
     function create(array $data): Customer
     {
         $id = DB::table("t_customers")->insertGetId($data);
+        $data['id'] = $id;
         return $this->mapper->fromArray($data);
     }
 
@@ -32,11 +33,6 @@ class CustomerRepositoryImpl implements CustomerRepository
     function list(): ?array
     {
         $customers = DB::table('t_customers')->get();
-        if ($customers) {
-            return $customers->map(function ($customer) {
-                return $this->mapper->formObj($customer);
-            })->toArray();
-        }
-        return null;
+        return $customers?->map(fn($customer) => $this->mapper->formObj($customer))->toArray();
     }
 }
